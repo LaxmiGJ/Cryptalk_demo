@@ -93,7 +93,7 @@ if st.button(&quot;Send&quot;):
         }
         res = requests.post(BACKEND_URL, json=payload)
         if res.status_code == 200:
-            st.success(&quot;✅ Message Sent&quot;)
+            st.success(&quot;Message Sent&quot;)
             st.write(tagged)
         else:
             st.error(&quot;Error sending&quot;)
