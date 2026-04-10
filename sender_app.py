@@ -18,13 +18,13 @@ LANG = {
 }
 
 EMOJI = {
-    &quot;joy&quot;:&quot;��&quot;,
-    &quot;sadness&quot;:&quot;��&quot;,
-    &quot;anger&quot;:&quot;��&quot;,
-    &quot;fear&quot;:&quot;��&quot;,
-    &quot;surprise&quot;:&quot;��&quot;,
-    &quot;confusion&quot;:&quot;��&quot;,
-    &quot;neutral&quot;:&quot;��&quot;
+    &quot;joy&quot;:&quot;&quot;,
+    &quot;sadness&quot;:&quot;&quot;,
+    &quot;anger&quot;:&quot;&quot;,
+    &quot;fear&quot;:&quot;&quot;,
+    &quot;surprise&quot;:&quot;&quot;,
+    &quot;confusion&quot;:&quot;&quot;,
+    &quot;neutral&quot;:&quot;&quot;
 }
 
 def detect_emotion(text):
