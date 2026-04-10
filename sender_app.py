@@ -3,11 +3,11 @@ import requests
 from deep_translator import GoogleTranslator
 import zlib, os
 from cryptography.hazmat.primitives.ciphers.aead import AESGCM
-# �� PUT YOUR OPENROUTER API KEY HERE
+
 OPENROUTER_API_KEY = &quot;sk-or-v1-
 ff0394f99fadc05c93c52d3711afd71855d6827231f341bdc0c8ec9851a68722&quot;
 BACKEND_URL = &quot;http://127.0.0.1:8000/send&quot;
-# �� Languages (UPDATED)
+
 LANG = {
     &quot;English&quot;:&quot;en&quot;,
     &quot;Hindi&quot;:&quot;hi&quot;,
@@ -16,7 +16,7 @@ LANG = {
     &quot;Telugu&quot;:&quot;te&quot;,
     &quot;Malayalam&quot;:&quot;ml&quot;
 }
-# �� Emoji map (UPDATED)
+
 EMOJI = {
     &quot;joy&quot;:&quot;��&quot;,
     &quot;sadness&quot;:&quot;��&quot;,
@@ -26,7 +26,7 @@ EMOJI = {
     &quot;confusion&quot;:&quot;��&quot;,
     &quot;neutral&quot;:&quot;��&quot;
 }
-# �� SMART EMOTION DETECTION (LLM)
+
 def detect_emotion(text):
     url = &quot;https://openrouter.ai/api/v1/chat/completions&quot;
     headers = {
@@ -51,7 +51,7 @@ def detect_emotion(text):
         return emotion
     except:
         return &quot;neutral&quot;
-# �� Encryption
+
 def encrypt(data):
     key = AESGCM.generate_key(bit_length=128)
     aes = AESGCM(key)
@@ -59,7 +59,7 @@ def encrypt(data):
     encrypted = aes.encrypt(nonce, data, None)
     return encrypted, key, nonce
 # UI
-st.title(&quot;�� CrypTalk Sender&quot;)
+st.title(&quot;CrypTalk Sender&quot;)
 sender = st.text_input(&quot;Sender&quot;)
 receiver = st.text_input(&quot;Receiver&quot;)
 s_lang = st.selectbox(&quot;Sender Language&quot;, list(LANG.keys()))
@@ -73,9 +73,9 @@ if st.button(&quot;Send&quot;):
             source=LANG[s_lang],
             target=&quot;en&quot;
         ).translate(msg)
-        # �� Emotion detection
+        
         emotion = detect_emotion(translated)
-        emoji = EMOJI.get(emotion, &quot;��&quot;)
+        emoji = EMOJI.get(emotion, &quot;&quot;)
         tagged = f&quot;[{emotion.upper()} {emoji}] {translated}&quot;
         compressed = zlib.compress(tagged.encode())
         enc, key, nonce = encrypt(compressed)
